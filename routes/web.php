@@ -3,10 +3,9 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Events\FormSubmitted;
+use App\Http\Controllers\SlideController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [SlideController::class, 'index']);
 
 Route::get('/sender', function () {
     return view('sender');
