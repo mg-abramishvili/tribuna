@@ -10,6 +10,11 @@ class Slide extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title', 'text', 'image'
+        'title', 'text', 'image', 'logo', 'video'
     ];
+
+    public function types()
+    {
+        return $this->belongsToMany('App\Models\Type');
+    }
 }

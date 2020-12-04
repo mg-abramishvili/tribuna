@@ -14,20 +14,30 @@
     <link rel="stylesheet" href="{{ asset('css/front.css') }}">
 </head>
 <body>
-    <div class="slider">
-        @foreach($slides as $slide)
-            <div class="slide slide{{$slide->id}}">
-                <h2>{{ $slide->title }}</h2>
-                {{ $slide->text }}
-                @if (pathinfo($slide->image, PATHINFO_EXTENSION) == 'mp4')
-                    <video nocontrols autoplay muted loop style="width:100%;">
-                        <source src="{{ $slide->image }}" type="video/mp4" />
-                    </video>
-                @else
-                    <img src="{{ $slide->image }}" style="width:100%;">
-                @endif
-            </div>
-        @endforeach
+    <div class="wrapper">
+        <div class="slider">
+            @foreach($slides as $slide)
+                <div class="slide slide{{$slide->id}}">
+                    <div class="slide-inner">
+
+                        @foreach($slide->types as $type)
+                            @if ($type->id == '1')
+                                {!! $slide->text !!}
+                            @elseif ($type->id == '2')
+                                <img src="{{ $slide->logo }}" style="width:90%; display: block; margin: 0 auto;">
+                            @elseif ($type->id == '3')
+                                <img src="{{ $slide->image }}" style="width:100%;">
+                            @elseif ($type->id == '4')
+                                <video nocontrols autoplay muted loop style="width:100%;">
+                                    <source src="{{ $slide->video }}" type="video/mp4" />
+                                </video>
+                            @endif
+                        @endforeach
+                        
+                    </div>
+                </div>
+            @endforeach
+        </div>
     </div>
 
     <div id="red" style="width: 100px; height: 100px;"></div>
@@ -46,8 +56,15 @@
         var theDiv = document.getElementById("red");
         var content = document.createTextNode(e.message);
         theDiv.appendChild(content);
-
+        
         flkty.selectCell('.slide' + e.message);
+        });
+    </script>
+
+    <script>
+    window.Echo.channel('my-channel-refresh')
+        .listen('FormSubmittedRefresh', (e) => {
+            location.reload();
         });
     </script>
 </body>

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Events\FormSubmitted;
+use App\Events\FormSubmittedRefresh;
 use App\Http\Controllers\SlideController;
 use App\Http\Controllers\FrontController;
 
@@ -24,6 +25,15 @@ Route::post('/sender', function () {
     $message = request()->message;
     echo $message;
     event(new FormSubmitted($message));
-    return redirect('/sender');
+    return redirect('/slides');
+
+});
+
+Route::post('/refresh', function () {
+    
+    $msg = request()->msg;
+    echo $msg;
+    event(new FormSubmittedRefresh($msg));
+    return redirect('/slides');
 
 });

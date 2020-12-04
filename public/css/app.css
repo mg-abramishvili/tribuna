@@ -1,0 +1,41 @@
+body {
+    background: url(/img/adminbg.jpg) center center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+h1 {
+    margin: 0;
+    color: #fff;
+}
+
+.page {
+    background-color: #fff;
+    padding: 30px 25px 15px 25px;
+    border-radius: 15px;
+    box-shadow: 0 1px 26px rgba(0,0,0,0.25);
+    margin-top: 30px;
+}
+
+.btn-primary {
+    box-shadow: 0 1px 26px rgba(255,255,255,0.9);
+}
+
+.page .table tr td {
+    vertical-align: middle;
+}
+
+.page .table tr td:nth-child(1) {
+    width: 65%;
+    font-weight: 700;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+.page .table tr td:nth-child(2) {
+    text-align: center;
+}
+
+.page .table tr td .btn {
+    margin: 10px;
+}
