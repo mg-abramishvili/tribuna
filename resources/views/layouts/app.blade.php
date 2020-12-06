@@ -23,6 +23,9 @@
         <link href="{{ asset('css/summernote.min.css') }}" rel="stylesheet">
         <script src="{{ asset('js/summernote.min.js') }}"></script>
         
+        <script>
+            document.oncontextmenu = new Function("return false;");
+        </script>
     </head>
     <body>
 
