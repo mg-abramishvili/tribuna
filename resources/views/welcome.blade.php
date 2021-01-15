@@ -23,7 +23,7 @@
 
                         @foreach($slide->types as $type)
                             @if ($type->id == '1')
-                                <p id="reppl" style="font-size: 50px; text-align: center; font-weight: bold;">{!! $slide->text !!}</p>
+                                <p id="reppl" style="font-size: 50px; text-align: center; font-family: arial narrow;font-weight: bold;">{!! $slide->text !!}</p>
                                 
                             @elseif ($type->id == '2')
                                 <img src="{{ $slide->logo }}" style="width:90%; display: block; margin: 0 auto;">
